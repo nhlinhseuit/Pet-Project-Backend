@@ -65,7 +65,7 @@ app.get('/api/get_product', (req, res) => {
 
 // update api
 
-app.put('api/update/:id', (req, res) => {
+app.put('/api/update/:id', (req, res) => {
     let id = req.params.id*1
     let productToUpdate = productData.find(p=>p.id === id)
     let index = productData.indexOf(productToUpdate)
