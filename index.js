@@ -33,7 +33,12 @@ app.post('/api/add_product', (req, res) => {
 
     // replace push to local with push to db with SEQUELIZE or direact sql
     productData.push(pdata)
+    
     console.log('Final pdata', pdata)
+
+    
+    console.log('productData', productData)
+
 
     res.status(200).send({
         'status_code': 200,
@@ -56,5 +61,21 @@ app.get('/api/get_product', (req, res) => {
             'products': [],
         })
     }
+} )
+
+// update api
+
+app.put('api/update/:id', (req, res) => {
+    let id = req.params.id*1
+    let productToUpdate = productData.find(p=>p.id === id)
+    let index = productData.indexOf(productToUpdate)
+
+    productData[index] = req.body
+
+    res.status(200).send({
+        'status_code': 200,
+        'message': 'Product updated!',
+        'product': pdata,
+    })
 } )
 
